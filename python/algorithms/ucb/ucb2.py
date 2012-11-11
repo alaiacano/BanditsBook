@@ -22,9 +22,6 @@ class UCB2(BanditAlgo):
 
         self.r = [0.0] * n_arms
 
-    def update(self):
-        pass
-
     def __bonus(self, n, r):
         tau = self.__tau(r)
         bonus = math.sqrt((1. + self.alpha) * math.log(math.e * float(n) / tau) / (2 * tau))
