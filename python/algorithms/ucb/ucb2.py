@@ -19,8 +19,7 @@ class UCB2(BanditAlgo):
         # super(BanditAlgo, self).initialize(n_arms)
         self.counts = [0 for col in range(n_arms)]
         self.values = [0.0 for col in range(n_arms)]
-
-        self.r = [0.0] * n_arms
+        self.r = [0 for col in range(n_arms)]
 
     def __bonus(self, n, r):
         tau = self.__tau(r)
@@ -30,12 +29,10 @@ class UCB2(BanditAlgo):
     def __tau(self, r):
         return int(math.ceil((1 + self.alpha) ** r))
 
-    def tau(self,r):
-        return self.__tau(r)
-
     def __set_arm(self, arm):
         """
-        When choosing a new arm, make sure we play that 
+        When choosing a new arm, make sure we play that arm for
+        tau(r+1) - tau(r) episodes.
         """
         self.__current_arm = arm
         self.__next_update += self.__tau(self.r[arm] + 1) - self.__tau(self.r[arm])
