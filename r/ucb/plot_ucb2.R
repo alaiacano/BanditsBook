@@ -2,11 +2,11 @@ library("plyr")
 library("ggplot2")
 
 data.files <- c(
-  "python/algorithms/ucb/ucb2_results_0.tsv",
-  "python/algorithms/ucb/ucb2_results_0.05.tsv",
   "python/algorithms/ucb/ucb2_results_0.1.tsv",
+  "python/algorithms/ucb/ucb2_results_0.3.tsv",
+  "python/algorithms/ucb/ucb2_results_0.5.tsv",
   "python/algorithms/ucb/ucb2_results_0.9.tsv",
-  "python/algorithms/ucb/ucb2_results_1.0.tsv"
+  "python/algorithms/ucb/ucb2_results_0.9.tsv"
 )
 
 results <- llply(data.files, function(x){z <- read.csv(x, header=F, sep="\t"); names(z)=c("Sim", "T", "ChosenArm", "Reward", "CumulativeReward", "Alpha"); return(z)})
