@@ -9,7 +9,7 @@ random.shuffle(means)
 arms = map(lambda (mu): BernoulliArm(mu), means)
 print("Best arm is " + str(ind_max(means)))
 
-for alpha in [0, 0.05, 0.1, .9, 1.]:
+for alpha in [0.1, 0.3, 0.5, 0.7, 0.9]:
     algo = UCB2(alpha, [], [])
     algo.initialize(n_arms)
     results = test_algorithm(algo, arms, 5000, 250)
